@@ -78,7 +78,7 @@ public class SysRoleServiceImpl implements ISysRoleService {
      */
     @Override
     public List<SysRole> selectRoleAll() {
-        return ((SysRoleServiceImpl)AopContext.currentProxy()).selectRoleList(new SysRole());
+        return ((SysRoleServiceImpl) AopContext.currentProxy()).selectRoleList(new SysRole());
     }
 
     /**
@@ -121,7 +121,7 @@ public class SysRoleServiceImpl implements ISysRoleService {
      * @param checkString
      * @return
      */
-    private String getResult(SysRole role, String checkString){
+    private String getResult(SysRole role, String checkString) {
         Long roleId = StringUtils.isNull(role.getRoleId()) ? -1L : role.getRoleId();
         SysRole info = roleMapper.checkRoleNameUnique(checkString);
         if (StringUtils.isNotNull(info) && info.getRoleId().longValue() != roleId.longValue()) {

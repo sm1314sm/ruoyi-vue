@@ -9,9 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
- * 开启AOP @EnableAspectJAutoProxy
- * 属性exposeProxy=true表示通过暴露该代理对象，让aopContext能够访问
- * 指定要扫描的Mapper类的包的路径 @MapperScan
+ * 属性exposeProxy=true表示通过AopContext可以在本类中获取代理对象
+ * 属性proxyTargetClass=true表示使用CGLIB方式创建代理对象
  */
 @Configuration
 @EnableAspectJAutoProxy(exposeProxy = true)
