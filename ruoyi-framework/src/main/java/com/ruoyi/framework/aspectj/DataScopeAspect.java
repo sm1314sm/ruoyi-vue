@@ -64,11 +64,11 @@ public class DataScopeAspect {
     /**
      * 前置通知
      */
-    @Before("dataScopePointCut()")
+    @Before(value = "dataScopePointCut()")
     public void doBefore(JoinPoint joinPoint) {
         // 获得注解
-        DataScope controllerDataScope = getAnnotationLog(joinPoint);
-        if (controllerDataScope == null) {
+        DataScope dataScope = getAnnotationLog(joinPoint);
+        if (dataScope == null) {
             return;
         }
         // 获取当前的用户
@@ -77,7 +77,7 @@ public class DataScopeAspect {
         if (currentUser != null) {
             // 如果是超级管理员，则不过滤数据
             if (!currentUser.isAdmin()) {
-                dataScopeFilter(joinPoint, currentUser, controllerDataScope.deptAlias(), controllerDataScope.userAlias());
+                dataScopeFilter(joinPoint, currentUser, dataScope.deptAlias(), dataScope.userAlias());
             }
         }
     }

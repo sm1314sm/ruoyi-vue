@@ -56,7 +56,7 @@ public class LogAspect {
     /**
      * 拦截异常操作
      */
-    @AfterThrowing(value = "logPointCut()", throwing = "e")
+    @AfterThrowing(pointcut = "logPointCut()", throwing = "e")
     public void doAfterThrowing(JoinPoint joinPoint, Exception e) {
         handleLog(joinPoint, e, null);
     }

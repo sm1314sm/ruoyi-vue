@@ -29,7 +29,7 @@ public class DataSourceAspect {
     /**
      * 环绕通知
      */
-    @Around("dsPointCut()")
+    @Around(value = "dsPointCut()")
     public Object around(ProceedingJoinPoint point) throws Throwable {
         DataSource dataSource = getDataSource(point);
         if (StringUtils.isNotNull(dataSource)) {
