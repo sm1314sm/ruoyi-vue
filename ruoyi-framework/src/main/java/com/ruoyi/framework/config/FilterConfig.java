@@ -13,7 +13,7 @@ import com.ruoyi.common.filter.XssFilter;
 import com.ruoyi.common.utils.StringUtils;
 
 /**
- * 配置可重复读取输入流和XSS过滤器
+ * 配置可重复读取输入流过滤器和防止XSS攻击过滤器
  */
 @Configuration
 public class FilterConfig {
@@ -26,12 +26,9 @@ public class FilterConfig {
     @Value("${xss.urlPatterns}")
     private String urlPatterns;
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
     @Bean
     public FilterRegistrationBean xssFilterRegistration() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
-        // 设置过滤器拦截的请求类型request
-        registration.setDispatcherTypes(DispatcherType.REQUEST);
         // 设置过滤器
         registration.setFilter(new XssFilter());
         // 设置过滤器拦截的目标
@@ -48,7 +45,6 @@ public class FilterConfig {
         return registration;
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
     @Bean
     public FilterRegistrationBean someFilterRegistration() {
         FilterRegistrationBean registration = new FilterRegistrationBean();

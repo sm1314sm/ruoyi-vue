@@ -18,6 +18,9 @@ public class ServerConfig {
         return getDomain(request);
     }
 
+    /**
+     * StringBuffer是线程安全的 delete删除指定的内容
+     */
     public static String getDomain(HttpServletRequest request) {
         StringBuffer url = request.getRequestURL();
         String contextPath = request.getServletContext().getContextPath();

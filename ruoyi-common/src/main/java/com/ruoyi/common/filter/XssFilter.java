@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ruoyi.common.utils.StringUtils;
 
 /**
- * 防止XSS攻击的过滤器
+ * 防止XSS攻击过滤器
  */
 public class XssFilter implements Filter {
     /**
@@ -57,6 +57,13 @@ public class XssFilter implements Filter {
         chain.doFilter(xssRequest, response);
     }
 
+    @Override
+    public void destroy() {
+    }
+
+    /**
+     * 判断哪些请求需要过滤
+     */
     private boolean handleExcludeURL(HttpServletRequest request, HttpServletResponse response) {
         if (!enabled) {
             return true;
@@ -73,9 +80,5 @@ public class XssFilter implements Filter {
             }
         }
         return false;
-    }
-
-    @Override
-    public void destroy() {
     }
 }

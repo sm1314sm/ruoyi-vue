@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
@@ -17,7 +18,7 @@ import org.slf4j.LoggerFactory;
 public class HttpHelper {
     private static final Logger LOGGER = LoggerFactory.getLogger(HttpHelper.class);
 
-    public static String getBodyString(ServletRequest request) {
+    public static String getBodyString(HttpServletRequest request) {
         StringBuilder sb = new StringBuilder();
         BufferedReader reader = null;
         try (InputStream inputStream = request.getInputStream()) {

@@ -34,12 +34,10 @@ public class SameUrlDataInterceptor extends RepeatSubmitInterceptor {
      */
     private int intervalTime = 10;
 
-    @SuppressWarnings("unchecked")
     @Override
     public boolean isRepeatSubmit(HttpServletRequest request) {
         RepeatedlyRequestWrapper repeatedlyRequestWrapper = (RepeatedlyRequestWrapper) request;
         String nowParams = HttpHelper.getBodyString(repeatedlyRequestWrapper);
-
         // body参数为空，获取Parameter的数据
         if (StringUtils.isEmpty(nowParams)) {
             nowParams = JSONObject.toJSONString(request.getParameterMap());
@@ -47,7 +45,6 @@ public class SameUrlDataInterceptor extends RepeatSubmitInterceptor {
         Map<String, Object> nowDataMap = new HashMap<>();
         nowDataMap.put(REPEAT_PARAMS, nowParams);
         nowDataMap.put(REPEAT_TIME, System.currentTimeMillis());
-
         // 请求地址（作为存放cache的key值）
         String url = request.getRequestURI();
         Object sessionObj = redisCache.getCacheObject(CACHE_REPEAT_KEY);
