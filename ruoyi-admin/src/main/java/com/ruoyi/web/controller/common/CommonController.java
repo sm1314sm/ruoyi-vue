@@ -33,7 +33,7 @@ public class CommonController {
     /**
      * 通用下载请求
      */
-    @GetMapping("common/download")
+    @GetMapping("/common/download")
     public void fileDownload(String fileName, Boolean delete, HttpServletResponse response, HttpServletRequest request) {
         try {
             if (!FileUtils.isValidFilename(fileName)) {
