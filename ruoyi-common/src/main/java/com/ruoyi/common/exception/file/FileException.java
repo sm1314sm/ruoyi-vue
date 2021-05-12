@@ -10,9 +10,6 @@ public class FileException extends BaseException {
 
     /**
      * 调用父类构造方法 定义异常模块为file 异常消息为null
-     *
-     * @param code
-     * @param args
      */
     public FileException(String code, Object[] args) {
         super("file", code, args, null);

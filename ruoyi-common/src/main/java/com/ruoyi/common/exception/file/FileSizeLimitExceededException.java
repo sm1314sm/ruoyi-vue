@@ -8,7 +8,6 @@ public class FileSizeLimitExceededException extends FileException {
 
     /**
      * 调用父类的构造方法 定义异常code为upload.exceed.maxSize 一个参数为defaultMaxSize
-     * @param defaultMaxSize
      */
     public FileSizeLimitExceededException(long defaultMaxSize) {
         super("upload.exceed.maxSize", new Object[]{defaultMaxSize});

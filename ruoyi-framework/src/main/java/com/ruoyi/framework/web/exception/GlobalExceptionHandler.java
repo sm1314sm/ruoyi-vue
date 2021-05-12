@@ -46,7 +46,7 @@ public class GlobalExceptionHandler {
      * 404访问路径错误异常
      */
     @ExceptionHandler(NoHandlerFoundException.class)
-    public AjaxResult handlerNoFoundException(Exception e) {
+    public AjaxResult handlerNoFoundException(NoHandlerFoundException e) {
         log.error(e.getMessage(), e);
         return AjaxResult.error(HttpStatus.NOT_FOUND, "路径不存在，请检查路径是否正确");
     }
@@ -56,7 +56,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(AccessDeniedException.class)
     public AjaxResult handleAuthorizationException(AccessDeniedException e) {
-        log.error(e.getMessage());
+        log.error(e.getMessage(), e);
         return AjaxResult.error(HttpStatus.FORBIDDEN, "没有权限，请联系管理员授权");
     }
 
