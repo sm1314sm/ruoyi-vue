@@ -1,12 +1,6 @@
 package com.ruoyi.system.service.impl;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +52,9 @@ public class SysMenuServiceImpl implements ISysMenuService {
         if (SysUser.isAdmin(userId)) {
             menuList = menuMapper.selectMenuList(menu);
         } else {
-            menu.getParams().put("userId", userId);
+            Map<String, Object> params = menu.getParams();
+            params.put("userId", userId);
+            menu.setParams(params);
             menuList = menuMapper.selectMenuListByUserId(menu);
         }
         return menuList;
