@@ -13,7 +13,7 @@ import com.ruoyi.common.exception.CustomException;
 public class SecurityUtils {
     /**
      * 获取用户账户
-     **/
+     */
     public static String getUsername() {
         try {
             return getLoginUser().getUsername();
@@ -24,7 +24,7 @@ public class SecurityUtils {
 
     /**
      * 获取用户
-     **/
+     */
     public static LoginUser getLoginUser() {
         try {
             return (LoginUser) getAuthentication().getPrincipal();
